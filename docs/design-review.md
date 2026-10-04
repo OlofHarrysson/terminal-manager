@@ -267,3 +267,27 @@ checks passed again after the column fix. Live in-app browser inspection confirm
 real registry rendering and visible keyboard focus on Stop without activating it.
 No live service was stopped, restarted, or newly launched; backend smoke tests and
 physical phone/touch testing were not run for this presentation-only change.
+
+## Installed-app icon — 4 October 2026
+
+Replaced the local Chrome shortcut's generic D icon with a gold terminal prompt on
+charcoal. The installed wrapper remains named Devrun UI and points at localhost:4317.
+Applied via macOS NSWorkspace's custom file-icon API, without replacing the app's
+executable or signed resources. Normal code-signature verification and opening the
+app passed. Strict signature verification rejects Finder custom-icon metadata;
+that limitation is specific to the custom file-icon treatment.
+
+The website now serves the same icon at 32, 192, and 512px, linked from page metadata
+and a standalone web manifest. `public/icons/terminal-manager-512.png` is the canonical
+raster; smaller files are proportional icon-size exports. Generated with built-in
+Image Gen: a single bold gold `>_` on a charcoal rounded tile, transparent padding,
+no additional symbols or text. Original generation:
+`~/.codex/generated_images/01a105df-189c-7f40-8b56-16109bf63b24/exec-9bdf091b-aa4a-4329-9fbb-90b64aa56106.png`.
+
+Before: `artifacts/design/dock-icon-before/app.iconset/`. macOS icon readback:
+`artifacts/design/dock-icon-after/installed.png`. Inspected the readback and 192px
+export. Frontend typecheck, served metadata/manifest, and installation-icon URLs
+passed. Dock UI inspection timed out twice, so immediate Dock cache refresh is
+unverified; quit/reopen the wrapper if it retains the old icon. Chrome refresh or
+reinstallation may replace a local custom icon; new installations have website
+icon metadata, but that installation path was not exercised.
