@@ -78,7 +78,7 @@ export default function HomePage() {
                   </div>
                   <div className="overview-service-actions">
                     {service.running && status === "ready" && service.effectiveUrl && <a className="overview-open" href={service.effectiveUrl} target="_blank" rel="noreferrer" aria-label={`Open ${project.name} ${service.name}`}>Open app <span aria-hidden="true">↗</span></a>}
-                    <button type="button" className={`btn btn-sm ${service.running ? "btn-outline" : "btn-ghost"}`} aria-label={`${service.running ? "Stop" : "Start"} ${project.name} ${service.name}`} disabled={Boolean(pending) || Boolean(app.error)} onClick={() => { void app.act(service.running ? "stop" : "start", project, service); }}>{pending ? pending.action === "stop" ? "Stopping…" : "Starting…" : service.running ? "Stop" : "Start"}</button>
+                    <button type="button" className={`btn btn-sm btn-ghost${service.running ? " overview-stop" : ""}`} aria-label={`${service.running ? "Stop" : "Start"} ${project.name} ${service.name}`} disabled={Boolean(pending) || Boolean(app.error)} onClick={() => { void app.act(service.running ? "stop" : "start", project, service); }}>{pending ? pending.action === "stop" ? "Stopping…" : "Starting…" : service.running ? "Stop" : "Start"}</button>
                   </div>
                 </div>;
               })}

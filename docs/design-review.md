@@ -228,3 +228,42 @@ checks (including 320px). Skill validation and the live bootstrap passed. Runtim
 backend files were preserved because the shared development watcher would restart
 on edits; existing internal API identity and diagnostics remain compatible. No
 production build or shared-runtime restart was needed for this naming change.
+
+## Project cards — 4 October 2026
+
+Olof selected subtle full-width project cards and then removed the proposed Stop
+button outlines. Implemented one surface per project, stronger project names,
+readable secondary text, aligned desktop service columns, and borderless actions
+with hover fill and the existing keyboard-focus ring. No nested service surfaces,
+shadows, or additional separators. Cards use slightly more vertical space than
+the prior list; 16px gaps establish project boundaries without repeated rules.
+
+Evidence: `artifacts/design/overview-cards-before-20261004/` and
+`artifacts/design/overview-cards-final-20261004/` contain matching 1440×900 and
+390×844 viewport captures, full-page context and first-project details, at 1× density.
+`artifacts/design/overview-cards-review.json` builds the installed Harness comparison.
+Data and clock are identical synthetic fixtures in each version. Captures are
+snapshots, not a live view.
+
+Visual QA: approved source is the revised mockup
+`~/.codex/generated_images/01a105df-189c-7f40-8b56-16109bf63b24/exec-4698dd09-3a06-447e-b9a6-e4405658980d.png`.
+Compared source and implementation together: same sample projects and states,
+with existing page width/header retained instead of scaling the generated raster.
+DM Sans, the approved flat palette, 8px card radius, project/service hierarchy,
+and borderless Stop match the selected direction. No raster assets were needed.
+Existing copy and status colors remain. Mobile stacks actions and wraps metadata.
+The mockup's internal service divider was omitted to keep the requested light
+surface treatment. No pixel-exact claim is made for the image-generated typography.
+
+First capture revealed shifted columns when Open app was absent; fixed by reserving
+the action column. Final desktop and mobile originals were inspected. No outstanding
+P0/P1/P2 findings; final result: passed. Human acceptance of the running result remains
+with Olof.
+
+Validation: frontend typecheck and all 10 existing overview tests passed, covering
+sorting/filtering, named-service stop/start, pending and failed actions, stale-state
+recovery, detail navigation, and long content at 320/390/1024/1440px. All four width
+checks passed again after the column fix. Live in-app browser inspection confirmed
+real registry rendering and visible keyboard focus on Stop without activating it.
+No live service was stopped, restarted, or newly launched; backend smoke tests and
+physical phone/touch testing were not run for this presentation-only change.

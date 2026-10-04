@@ -68,9 +68,15 @@ Olof approved this palette on 28 September 2026.
 ### DR-OVERVIEW — implemented
 
 - Owners: `src/app/page.tsx`, `src/hooks/useProjectOverview.ts`, `src/lib/overview.ts`.
-- Landing view: quiet project rows showing name, named running services, last start,
+- Landing view: subtle full-width project cards showing name, named running services, last start,
   running duration, and contextual Start/Stop/Open app actions. Open project detail
   for terminal output and history; do not load every terminal just to review projects.
+- Group each project on the surface color with an 8px radius, no border or shadow,
+  and 16px between cards. Use stronger project names and subordinate paths/recency.
+  Align service status, duration, and actions on desktop, retaining the action column
+  when Open app is absent. Reflow service information and actions on mobile.
+  Stop is a borderless text button with a full click target, subtle hover fill, and
+  visible keyboard focus; do not add outlined controls or nested service cards.
 - Offer All / Running independently from sort order. Default to Running with recent
   starts first on initial entry, with longest-running first available for cleanup.
   Keep a stable tie-break and preserve selection during refreshes.
